@@ -11,6 +11,11 @@ const styles = css`
     font-family: "Public Sans", sans-serif;
     line-height: 1.2;
   }
+  a {
+    font: inherit;
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
 export default function global() {
