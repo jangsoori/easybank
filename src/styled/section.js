@@ -1,11 +1,19 @@
 import styled from "@emotion/styled"
+import { css } from "@emotion/core"
 
-export const Section = styled.div`
+export const Section = styled.section`
   display: grid;
   row-gap: 2.5rem;
   grid-auto-rows: max-content;
-  padding: 0 2rem;
-
+  padding: 8rem 2rem;
   justify-content: center;
   text-align: center;
+  background: ${({ secondary, theme }) =>
+    secondary && theme.colors.neutral.lightGrayBlue};
+
+  ${({ blue, theme }) =>
+    blue &&
+    css`
+      background: ${theme.colors.primary.blue}};
+    `}
 `
