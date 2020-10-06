@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
+import { breakpoints } from "./breakpoints"
 
 export const Section = styled.section`
   display: grid;
@@ -8,6 +9,7 @@ export const Section = styled.section`
   padding: 8rem 2rem;
   justify-content: center;
   text-align: center;
+
   background: ${({ secondary, theme }) =>
     secondary && theme.colors.neutral.lightGrayBlue};
 
@@ -16,4 +18,8 @@ export const Section = styled.section`
     css`
       background: ${theme.colors.primary.blue}};
     `}
+
+  @media only screen and (min-width: ${breakpoints.b}) {
+    padding: 8rem 16rem;
+  }
 `
