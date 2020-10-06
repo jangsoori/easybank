@@ -21,8 +21,6 @@ const FeaturesItem = styled.div`
   justify-items: center;
 `
 
-const ItemImg = styled.img``
-
 export default function WhyUs() {
   return (
     <Section secondary>
@@ -33,7 +31,7 @@ export default function WhyUs() {
       </BodyText>
       <Features>
         <FeaturesItem>
-          <ItemImg src={ImgOnline} />
+          <ImgOnline />
           <BodyTitle size="2.4rem">Online Banking</BodyTitle>
           <BodyText size="1.5rem">
             Our modern web and mobile applications allow you to keep track of
@@ -41,7 +39,7 @@ export default function WhyUs() {
           </BodyText>
         </FeaturesItem>
         <FeaturesItem>
-          <ItemImg src={ImgBudgeting} />
+          <ImgBudgeting />
           <BodyTitle size="2.4rem">Simple Budgeting</BodyTitle>
           <BodyText size="1.5rem">
             See exactly where your money goes each month. Receive notifications
@@ -49,7 +47,7 @@ export default function WhyUs() {
           </BodyText>
         </FeaturesItem>
         <FeaturesItem>
-          <ItemImg src={ImgOnboarding} />
+          <ImgOnboarding />
           <BodyTitle size="2.4rem">Fast Onboarding</BodyTitle>
           <BodyText size="1.5rem">
             We don't do branches. Open your account in minute online and start
@@ -57,7 +55,7 @@ export default function WhyUs() {
           </BodyText>
         </FeaturesItem>
         <FeaturesItem>
-          <ItemImg src={ImgAPI} />
+          <ImgAPI />
           <BodyTitle size="2.4rem">Open API</BodyTitle>
           <BodyText size="1.5rem">
             Manage your savings, investments, pension, and much more from one
