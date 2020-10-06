@@ -10,6 +10,7 @@ const styles = css`
   body {
     font-family: "Public Sans", sans-serif;
     line-height: 1.2;
+    overflow-x: hidden;
   }
   a {
     font: inherit;
