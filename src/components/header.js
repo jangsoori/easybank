@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import { Link } from "gatsby"
-import Logo from "../images/logo.svg"
+import Logo from "../assets/svg/logo.svg"
 const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
@@ -68,7 +68,7 @@ export default function Header() {
   return (
     <StyledHeader>
       <StyledLogo>
-        <img src={Logo} alt="" />
+        <Logo />
       </StyledLogo>
       <StyledMobileNavBtn
         active={menuActive}
