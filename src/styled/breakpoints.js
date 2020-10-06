@@ -1,6 +1,6 @@
-export const mediaqueries = {
-  xs: 320,
-  s: 480,
-  m: 760,
-  b: 1200,
+export const breakpoints = {
+  xs: "320px",
+  s: "480px",
+  m: "760px",
+  b: "1200px",
 }
