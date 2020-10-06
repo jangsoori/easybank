@@ -14,6 +14,7 @@ const Articles = styled.div`
   gap: 2rem;
 `
 const Article = styled.div`
+  max-width: 340px;
   border-radius: 0.8rem;
   display: grid;
   height: 40rem;
