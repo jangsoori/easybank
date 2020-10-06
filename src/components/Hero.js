@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
-import background from "../assets/svg/bg-intro-mobile.svg"
+import BackgroundSVG from "../assets/svg/bg-intro-mobile.svg"
 import mockups from "../assets/image-mockups.png"
 import { BodyText } from "../styled/bodyText"
 import { BodyTitle } from "../styled/bodyTitle"
@@ -12,25 +12,28 @@ const StyledHeroSection = styled.section`
 `
 const MockupsContainer = styled.div`
   position: relative;
-  height: 30%;
+  height: 100%;
 `
-const Background = styled.img`
-  margin-top: -3rem;
+const Background = styled(BackgroundSVG)`
   width: 100%;
+  margin: 0 auto;
 `
 const Mockups = styled.img`
   position: absolute;
-  left: 0;
-  top: -32%;
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  top: -15%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-height: 100%;
 `
 
 export default function Hero() {
   return (
     <StyledHeroSection>
       <MockupsContainer>
-        <Background src={background} alt="" />
-        <Mockups src={mockups} alt="" />
+        <Background />
+        <Mockups src={mockups} />
       </MockupsContainer>
       <Section
         style={{ background: "white", marginTop: "-4rem", padding: "0 2rem" }}
