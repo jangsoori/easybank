@@ -7,6 +7,9 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 2rem;
+  z-index: 100;
+  background: ${({ theme }) => theme.colors.neutral.white};
 `
 
 const StyledLogo = styled.div`
