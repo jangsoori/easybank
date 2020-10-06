@@ -19,6 +19,9 @@ const StyledHeader = styled.header`
     css`
       box-shadow: 0px 50px 300px 600px hsla(233, 26%, 24%, 0.7);
     `}
+  @media only screen and (min-width:${breakpoints.b}) {
+    padding: 0rem 16rem;
+  }
 `
 
 const StyledLogo = styled.div`
