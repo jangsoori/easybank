@@ -25,7 +25,7 @@ const StyledMobileNavBtn = styled.button`
   position: relative;
   padding: 0;
   display: flex;
-  
+  cursor:pointer;
   flex-direction: column;
   justify-content: space-around;
   outline:none;
