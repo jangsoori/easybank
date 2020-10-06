@@ -3,13 +3,16 @@ import styled from "@emotion/styled"
 import { css } from "@emotion/core"
 import { Link } from "gatsby"
 import Logo from "../assets/svg/logo.svg"
+import { breakpoints } from "../styled/breakpoints"
+import { lighten } from "polished"
 const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 0 2rem;
   z-index: 100;
   position: relative;
+  height: 7rem;
   background: ${({ theme }) => theme.colors.neutral.white};
   ${({ mobileActive, theme }) =>
     mobileActive &&
@@ -60,9 +63,13 @@ ${({ active }) =>
   }
 `}
    
+   @media only screen and (min-width:${breakpoints.b}){
+     display:none
+   }
 `
 const StyledNav = styled.nav`
   display: none;
+  font-size: 1.8rem;
   ${({ mobileActive }) =>
     mobileActive &&
     css`
@@ -77,13 +84,70 @@ const StyledNav = styled.nav`
       transform: translateX(-50%);
       border-radius: 5px;
       gap: 2.4rem;
-      font-size: 1.8rem;
+
       width: 32rem;
     `}
+  @media only screen and (min-width:${breakpoints.b}) {
+    display: grid;
+    grid-template-columns: repeat(5, max-content);
+    grid-template-rows: 1fr;
+    flex: 1;
+    gap: 0;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
 `
-const StyledNavItem = styled(Link)``
-const StyledCta = styled.div`
-  display: none;
+const StyledNavItem = styled(Link)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    color: ${({ theme }) => theme.colors.neutral.grayBlue};
+    ::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      transition: width 0.2s;
+      height: 4px;
+      background-color: ${({ theme }) => theme.colors.primary.green};
+    }
+    :hover {
+      color: ${({ theme }) => theme.colors.primary.blue};
+    }
+    :hover ::after {
+      width: 100%;
+    }
+  }
+`
+const StyledCta = styled.button`
+  @media only screen and (max-width: ${breakpoints.b}) {
+    display: none;
+  }
+  width: 15rem;
+  margin: 0 auto;
+  padding: 1.25rem 0;
+  border-radius: 5rem;
+  grid-column: 3/4;
+  background: linear-gradient(
+    90deg,
+    ${({ theme }) => theme.colors.primary.green} 0%,
+    ${({ theme }) => theme.colors.primary.cyan} 100%
+  );
+  border: none;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background: linear-gradient(
+      90deg,
+      ${({ theme }) => lighten(0.1, theme.colors.primary.green)} 0%,
+      ${({ theme }) => lighten(0.1, theme.colors.primary.cyan)} 100%
+    );
+  }
 `
 
 export default function Header() {
@@ -108,6 +172,7 @@ export default function Header() {
         <StyledNavItem to="/blog">Blog</StyledNavItem>
         <StyledNavItem to="/careers">Careers</StyledNavItem>
       </StyledNav>
+      <StyledCta>Request Invite</StyledCta>
     </StyledHeader>
   )
 }
