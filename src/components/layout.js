@@ -9,7 +9,6 @@ import { theme } from "../theme/theme"
 const StyledLayout = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem;
 `
 
 export default function Layout({ children }) {
