@@ -13,8 +13,11 @@ import Pinterest from "../assets/svg/icon-pinterest.svg"
 import Twitter from "../assets/svg/icon-twitter.svg"
 import Youtube from "../assets/svg/icon-youtube.svg"
 import { Link } from "gatsby"
+import { breakpoints } from "../styled/breakpoints"
 
 const StyledLogo = styled(Logo)`
+  justify-self: center;
+
   > g {
     > path {
       :first-child {
@@ -30,6 +33,10 @@ const Socials = styled.section`
   gap: 1.8rem;
   justify-content: center;
   justify-items: center;
+  @media only screen and (min-width: ${breakpoints.b}) {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
 `
 
 const Nav = styled.nav`
@@ -38,20 +45,36 @@ const Nav = styled.nav`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.neutral.vLightGray};
   gap: 2rem;
+
+  @media only screen and (min-width: ${breakpoints.b}) {
+    grid-template-columns: max-content max-content;
+    column-gap: 10rem;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-row: 1/3;
+    grid-column: 2/3;
+    ${"" /* justify-self: center; */}
+    text-align:left;
+  }
 `
 
 const Copy = styled(BodyText)`
   font-size: 1.4rem;
 `
 const StyledLink = styled(Link)``
+
+const SectionWrapper = styled(Section)`
+  gap: 4rem;
+  @media only screen and (min-width: ${breakpoints.b}) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+  }
+`
+
 export default function Footer() {
   return (
-    <Section blue style={{ gap: "4rem" }}>
-      <StyledLogo
-        css={css`
-          justify-self: center;
-        `}
-      />
+    <SectionWrapper blue>
+      <StyledLogo />
       <Socials>
         <Facebook />
         <Youtube />
@@ -69,6 +92,6 @@ export default function Footer() {
       </Nav>
       <CtaBtn />
       <Copy>&copy; Easybank. All Rights Reserved</Copy>
-    </Section>
+    </SectionWrapper>
   )
 }
