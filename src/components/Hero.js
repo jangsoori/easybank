@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core"
 import BackgroundSmall from "../assets/svg/bg-intro-mobile.svg"
 import BackgroundBig from "../assets/svg/bg-intro-desktop.svg"
 import mockups from "../assets/image-mockups.png"
@@ -52,6 +51,7 @@ const Mockups = styled.img`
   height: 40rem;
   @media only screen and (min-width: ${breakpoints.b}) {
     top: -20%;
+
     height: 120rem;
     left: auto;
     right: -65rem;
@@ -59,20 +59,8 @@ const Mockups = styled.img`
   }
 `
 
-export default function Hero() {
-  const size = useWindowSize()
-  console.log(breakpoints.b)
-  console.log(size.width > 1200)
-  return (
-    <StyledHeroSection>
-      <Background>
-        {size.width >= 1200 ? <BackgroundDesktop /> : <BackgroundMobile />}
-      </Background>
-      <Mockups src={mockups} />
-
-      <Section
-        css={css`
-          background: white;
+const SectionWrapper = styled(Section)`
+ background: white;
           margin-top: -4rem;
           padding: 0 2rem;
           @media only screen and (min-width: ${breakpoints.b}) {
@@ -87,35 +75,41 @@ export default function Hero() {
             button {
               margin: 0;
             }
-          }
-        `}
-      >
-        <BodyTitle
-          size="4.5rem"
-          css={css`
-            @media only screen and (min-width: ${breakpoints.b}) {
-              font-size: 6rem;
-            }
-          `}
-        >
+`
+
+const SectionTitle = styled(BodyTitle)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    font-size: 6rem;
+  }
+`
+const SectionText = styled(BodyText)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    font-size: 2.5rem;
+  }
+`
+export default function Hero() {
+  const size = useWindowSize()
+
+  return (
+    <StyledHeroSection>
+      <Background>
+        {size.width >= 1200 ? <BackgroundDesktop /> : <BackgroundMobile />}
+      </Background>
+      <Mockups src={mockups} />
+
+      <SectionWrapper>
+        <SectionTitle size="4.5rem">
           Next generation
           <br />
           digital banking
-        </BodyTitle>
-        <BodyText
-          css={css`
-            @media only screen and (min-width: ${breakpoints.b}) {
-              font-size: 2.5rem;
-            }
-          `}
-          size="1.6rem"
-        >
+        </SectionTitle>
+        <SectionText size="1.6rem">
           Take your financial life online. Your Easybank account will be a
           one-stop-shop for spending, saving, budgeting, investing and much
           more.
-        </BodyText>
+        </SectionText>
         <CtaBtn />
-      </Section>
+      </SectionWrapper>
     </StyledHeroSection>
   )
 }
