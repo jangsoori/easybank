@@ -88,7 +88,7 @@ const StyledNav = styled.nav`
       border-radius: 5px;
       gap: 2.4rem;
 
-      width: 32rem;
+      width: 30rem;
     `}
   @media only screen and (min-width:${breakpoints.b}) {
     display: grid;
@@ -170,10 +170,10 @@ export default function Header() {
       </StyledMobileNavBtn>
       <StyledNav mobileActive={menuActive}>
         <StyledNavItem to="/">Home</StyledNavItem>
-        <StyledNavItem to="/about">About</StyledNavItem>
-        <StyledNavItem to="/contact">Contact</StyledNavItem>
-        <StyledNavItem to="/blog">Blog</StyledNavItem>
-        <StyledNavItem to="/careers">Careers</StyledNavItem>
+        <StyledNavItem to="/">About</StyledNavItem>
+        <StyledNavItem to="/">Contact</StyledNavItem>
+        <StyledNavItem to="/">Blog</StyledNavItem>
+        <StyledNavItem to="/">Careers</StyledNavItem>
       </StyledNav>
       <StyledCta>Request Invite</StyledCta>
     </StyledHeader>

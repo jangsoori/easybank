@@ -1,9 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core"
 
 import { BodyText } from "../styled/bodyText"
-import { BodyTitle } from "../styled/bodyTitle"
 import { Section } from "../styled/section"
 import CtaBtn from "./CtaBtn"
 import Logo from "../assets/svg/logo.svg"
@@ -20,7 +18,7 @@ const StyledLogo = styled(Logo)`
 
   > g {
     > path {
-      :first-child {
+      :first-of-type {
         fill: white;
       }
     }

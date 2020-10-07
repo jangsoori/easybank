@@ -13,19 +13,19 @@ const StyledHeroSection = styled.section`
   padding-bottom: 8rem;
   @media only screen and (min-width: ${breakpoints.b}) {
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr;
     padding-bottom: 0;
     position: relative;
+    height: 70rem;
   }
 `
 const Background = styled.div`
   position: relative;
   width: 100%;
   @media only screen and (min-width: ${breakpoints.b}) {
-    flex: 5;
-    height: 80rem;
-    overflow: hidden;
-    grid-column: 2/3;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 `
 
@@ -39,22 +39,23 @@ const BackgroundDesktop = styled(BackgroundBig)`
   position: absolute;
   top: -20rem;
   right: -40rem;
-  transform: scale(1.5);
+  transform: scale(1);
 `
 const Mockups = styled.img`
   position: absolute;
   display: flex;
   justify-content: center;
-  top: 0%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
-  height: 40rem;
+  height: 38rem;
+
   @media only screen and (min-width: ${breakpoints.b}) {
     top: -20%;
 
-    height: 120rem;
+    height: 100rem;
     left: auto;
-    right: -65rem;
+    right: -55rem;
     overflow: hidden;
   }
 `
@@ -63,6 +64,7 @@ const SectionWrapper = styled(Section)`
  background: white;
           margin-top: -4rem;
           padding: 0 2rem;
+          
           @media only screen and (min-width: ${breakpoints.b}) {
             margin-top: 0;
             flex: 3;
@@ -72,6 +74,7 @@ const SectionWrapper = styled(Section)`
             grid-column: 1/2;
             grid-row: 1/2;
             padding-right: 0;
+            width:30%;
             button {
               margin: 0;
             }
@@ -93,7 +96,7 @@ export default function Hero() {
   return (
     <StyledHeroSection>
       <Background>
-        {size.width >= 1200 ? <BackgroundDesktop /> : <BackgroundMobile />}
+        {size.width >= 1400 ? <BackgroundDesktop /> : <BackgroundMobile />}
       </Background>
       <Mockups src={mockups} />
 

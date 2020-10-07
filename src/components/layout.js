@@ -1,5 +1,4 @@
 import React from "react"
-import { Global, css } from "@emotion/core"
 import GlobalStyles from "../theme/global"
 import styled from "@emotion/styled"
 import Header from "./Header"
