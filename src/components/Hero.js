@@ -96,7 +96,7 @@ export default function Hero() {
   const size = useWindowSize()
   const query = useStaticQuery(graphql`
     query MyQuery {
-      file(relativePath: { eq: "images/image-mockups.png" }) {
+      file(relativePath: { eq: "image-mockups.png" }) {
         id
         mobile: childImageSharp {
           fixed(height: 380) {

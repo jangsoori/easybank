@@ -64,7 +64,7 @@ const Image = styled.div`
 export default function LatestArticles() {
   const query = useStaticQuery(graphql`
     query {
-      restaurant: file(relativePath: { eq: "images/image-restaurant.jpg" }) {
+      restaurant: file(relativePath: { eq: "image-restaurant.jpg" }) {
         id
         childImageSharp {
           fixed {
@@ -72,7 +72,7 @@ export default function LatestArticles() {
           }
         }
       }
-      plane: file(relativePath: { eq: "images/image-plane.jpg" }) {
+      plane: file(relativePath: { eq: "image-plane.jpg" }) {
         id
         childImageSharp {
           fixed {
@@ -80,7 +80,7 @@ export default function LatestArticles() {
           }
         }
       }
-      confetti: file(relativePath: { eq: "images/image-confetti.jpg" }) {
+      confetti: file(relativePath: { eq: "image-confetti.jpg" }) {
         id
         childImageSharp {
           fixed {
@@ -88,7 +88,7 @@ export default function LatestArticles() {
           }
         }
       }
-      currency: file(relativePath: { eq: "images/image-currency.jpg" }) {
+      currency: file(relativePath: { eq: "image-currency.jpg" }) {
         id
         childImageSharp {
           fixed {
@@ -98,7 +98,6 @@ export default function LatestArticles() {
       }
     }
   `)
-  console.log(query)
   return (
     <Wrapper>
       <HeaderTitle size="3.6rem">Latest Articles</HeaderTitle>
