@@ -7,11 +7,19 @@ import plane from "../assets/image-plane.jpg"
 import restaurant from "../assets/image-restaurant.jpg"
 import confetti from "../assets/image-confetti.jpg"
 import currency from "../assets/image-currency.jpg"
+import { breakpoints } from "../styled/breakpoints"
 
 const Articles = styled.div`
   display: grid;
   grid-auto-rows: max-content;
-  gap: 2rem;
+  gap: 4rem;
+  @media only screen and (min-width: ${breakpoints.b}) {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: stretch;
+    width: 100%;
+    gap: 10rem;
+  }
 `
 const Article = styled.div`
   max-width: 340px;
@@ -40,10 +48,18 @@ const Author = styled(BodyText)``
 const Title = styled(BodyTitle)``
 const Text = styled(BodyText)``
 
+const HeaderTitle = styled(BodyTitle)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    text-align: left;
+    font-size: 5rem;
+    margin-bottom: 3rem;
+  }
+`
+
 export default function LatestArticles() {
   return (
     <Section>
-      <BodyTitle size="3.6rem">Latest Articles</BodyTitle>
+      <HeaderTitle size="3.6rem">Latest Articles</HeaderTitle>
       <Articles>
         <Article>
           <Image src={currency} />
