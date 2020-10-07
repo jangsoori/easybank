@@ -29,7 +29,8 @@ const StyledLogo = styled.div`
   align-items: center;
 `
 
-const StyledMobileNavBtn = styled.button`
+const StyledMobileNavBtn = styled.div`
+
   background: none;
   border: none;
   height: 3rem;
