@@ -1,7 +1,7 @@
 import React from "react"
 import GlobalStyles from "../theme/global"
 import styled from "@emotion/styled"
-import Header from "./Header"
+import Header from "./header"
 import Footer from "./Footer"
 import { ThemeProvider } from "emotion-theming"
 import { theme } from "../theme/theme"
