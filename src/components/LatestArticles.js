@@ -1,13 +1,13 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { css } from "@emotion/css"
 import { Section } from "../styled/section"
 import { BodyText } from "../styled/bodyText"
 import { BodyTitle } from "../styled/bodyTitle"
-import plane from "../assets/image-plane.jpg"
-import restaurant from "../assets/image-restaurant.jpg"
-import confetti from "../assets/image-confetti.jpg"
-import currency from "../assets/image-currency.jpg"
+
 import { breakpoints } from "../styled/breakpoints"
+import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 
 const Articles = styled.div`
   display: grid;
@@ -16,9 +16,7 @@ const Articles = styled.div`
   @media only screen and (min-width: ${breakpoints.b}) {
     grid-template-rows: 1fr;
     grid-template-columns: repeat(4, 1fr);
-    justify-items: stretch;
     width: 100%;
-    gap: 10rem;
   }
 `
 const Article = styled.div`
@@ -30,12 +28,7 @@ const Article = styled.div`
   overflow: hidden;
   background: white;
 `
-const Image = styled.img`
-  width: 100%;
-  object-fit: cover;
 
-  height: 100%;
-`
 const Details = styled.section`
   padding: 3rem;
   display: grid;
@@ -55,14 +48,65 @@ const HeaderTitle = styled(BodyTitle)`
     margin-bottom: 3rem;
   }
 `
-
+const Wrapper = styled(Section)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    justify-content: left;
+  }
+`
+const Image = styled.div`
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  div {
+    width: 340px !important;
+  }
+`
 export default function LatestArticles() {
+  const query = useStaticQuery(graphql`
+    query {
+      restaurant: file(relativePath: { eq: "images/image-restaurant.jpg" }) {
+        id
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      plane: file(relativePath: { eq: "images/image-plane.jpg" }) {
+        id
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      confetti: file(relativePath: { eq: "images/image-confetti.jpg" }) {
+        id
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+      currency: file(relativePath: { eq: "images/image-currency.jpg" }) {
+        id
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
+  console.log(query)
   return (
-    <Section>
+    <Wrapper>
       <HeaderTitle size="3.6rem">Latest Articles</HeaderTitle>
       <Articles>
         <Article>
-          <Image src={currency} />
+          <Image>
+            <Img fixed={query.currency.childImageSharp.fixed} />
+          </Image>
           <Details>
             <Author size="1rem">By Claire Robinson</Author>
             <Title size="1.6rem">
@@ -75,7 +119,9 @@ export default function LatestArticles() {
           </Details>
         </Article>
         <Article>
-          <Image src={restaurant} />
+          <Image>
+            <Img fixed={query.restaurant.childImageSharp.fixed} />
+          </Image>
           <Details>
             <Author size="1rem">By Wilson Hutton</Author>
             <Title size="1.6rem">
@@ -88,7 +134,9 @@ export default function LatestArticles() {
           </Details>
         </Article>
         <Article>
-          <Image src={plane} />
+          <Image>
+            <Img fixed={query.plane.childImageSharp.fixed} />
+          </Image>
           <Details>
             <Author size="1rem">By Wilson Hutton</Author>
             <Title size="1.6rem">Take your Easybank card wherever you go</Title>
@@ -99,7 +147,9 @@ export default function LatestArticles() {
           </Details>
         </Article>
         <Article>
-          <Image src={confetti} />
+          <Image>
+            <Img fixed={query.confetti.childImageSharp.fixed} />
+          </Image>
           <Details>
             <Author size="1rem">By Claire Robinson</Author>
             <Title size="1.6rem">
@@ -112,6 +162,6 @@ export default function LatestArticles() {
           </Details>
         </Article>
       </Articles>
-    </Section>
+    </Wrapper>
   )
 }

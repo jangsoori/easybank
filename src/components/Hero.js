@@ -2,13 +2,14 @@ import React from "react"
 import styled from "@emotion/styled"
 import BackgroundSmall from "../assets/svg/bg-intro-mobile.svg"
 import BackgroundBig from "../assets/svg/bg-intro-desktop.svg"
-import mockups from "../assets/image-mockups.png"
 import { BodyText } from "../styled/bodyText"
 import { BodyTitle } from "../styled/bodyTitle"
 import { Section } from "../styled/section"
 import CtaBtn from "./CtaBtn"
 import { breakpoints } from "../styled/breakpoints"
 import useWindowSize from "../useWindowDimensions"
+import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 const StyledHeroSection = styled.section`
   padding-bottom: 8rem;
   @media only screen and (min-width: ${breakpoints.b}) {
@@ -41,7 +42,7 @@ const BackgroundDesktop = styled(BackgroundBig)`
   right: -40rem;
   transform: scale(1);
 `
-const Mockups = styled.img`
+const Mockups = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -90,16 +91,38 @@ const SectionText = styled(BodyText)`
     font-size: 2.5rem;
   }
 `
+
 export default function Hero() {
   const size = useWindowSize()
-
+  const query = useStaticQuery(graphql`
+    query MyQuery {
+      file(relativePath: { eq: "images/image-mockups.png" }) {
+        id
+        mobile: childImageSharp {
+          fixed(height: 380) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+        desktop: childImageSharp {
+          fixed(height: 1000) {
+            ...GatsbyImageSharpFixed
+          }
+        }
+      }
+    }
+  `)
   return (
     <StyledHeroSection>
       <Background>
         {size.width >= 1400 ? <BackgroundDesktop /> : <BackgroundMobile />}
       </Background>
-      <Mockups src={mockups} />
-
+      <Mockups>
+        {size.width >= 1400 ? (
+          <Img fixed={query.file.desktop.fixed} />
+        ) : (
+          <Img fixed={query.file.mobile.fixed} />
+        )}
+      </Mockups>
       <SectionWrapper>
         <SectionTitle size="4.5rem">
           Next generation
