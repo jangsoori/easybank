@@ -7,28 +7,59 @@ import ImgAPI from "../assets/svg/icon-api.svg"
 import ImgBudgeting from "../assets/svg/icon-budgeting.svg"
 import ImgOnboarding from "../assets/svg/icon-onboarding.svg"
 import ImgOnline from "../assets/svg/icon-online.svg"
+import { breakpoints } from "../styled/breakpoints"
 
 const Features = styled.section`
   display: grid;
   grid-auto-rows: max-content;
-  row-gap: 4rem;
+  gap: 4rem;
+  @media only screen and (min-width: ${breakpoints.b}) {
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+  }
 `
 
 const FeaturesItem = styled.div`
   display: grid;
   grid-template-rows: repeat(3, max-content);
-  row-gap: 2rem;
+  gap: 2rem;
+
   justify-items: center;
+  @media only screen and (min-width: ${breakpoints.b}) {
+    justify-items: left;
+    text-align: left;
+  }
+`
+const Wrapper = styled(Section)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    justify-content: left;
+  }
+`
+
+const HeaderTitle = styled(BodyTitle)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    text-align: left;
+    font-size: 5rem;
+  }
+`
+
+const HeaderText = styled(BodyText)`
+  @media only screen and (min-width: ${breakpoints.b}) {
+    text-align: left;
+    font-size: 2rem;
+    width: 70%;
+    margin-bottom: 5rem;
+  }
 `
 
 export default function WhyUs() {
   return (
-    <Section secondary>
-      <BodyTitle size="3.6rem">Why choose Easybank</BodyTitle>
-      <BodyText size="1.5rem">
+    <Wrapper secondary>
+      <HeaderTitle size="3.6rem">Why choose Easybank</HeaderTitle>
+      <HeaderText size="1.5rem">
         We leverage Open Banking to turn your bank account into your financial
         hub. Control your finances like never before.
-      </BodyText>
+      </HeaderText>
       <Features>
         <FeaturesItem>
           <ImgOnline />
@@ -63,6 +94,6 @@ export default function WhyUs() {
           </BodyText>
         </FeaturesItem>
       </Features>
-    </Section>
+    </Wrapper>
   )
 }
